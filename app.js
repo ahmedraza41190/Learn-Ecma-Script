@@ -1,3 +1,62 @@
+// --------------------------------------Class-1----------------------------------------------------
+
+
+
+// var fname = 'Saad'
+// fname = 'Ali'
+// console.log(fname)
+
+
+// let fname = 'Saad'
+// fname = 'Ali'
+// console.log(fname)
+
+
+// if(true){
+//     var a = 45
+// }
+// console.log(a)
+
+// a = 5;
+// var a;
+// console.log(a)
+// foo()
+
+// function foo(){
+//     alert('hello world')
+// }
+
+// const fname = 'Saad'
+// fname = 'Ali'
+// console.log(fname)
+
+// const obj = {
+//     fanme: 'Saad',
+//     roll_no: 123
+// }
+
+// obj.fanme = 'Ali'
+
+// console.log(obj.fanme)
+
+// const arr = ['Ali','Hamza']
+// arr = ['Hamzaaa','Hadi']
+// console.log(arr)
+
+// arr[1] = 'Jalal'
+// console.log(arr)
+
+
+
+
+
+
+
+
+// --------------------------------------Class-2----------------------------------------------
+
+
+
 // -------------------------template literals----------------------------
 
 
@@ -80,17 +139,25 @@
 // alert(foo())
 
 
-let prom = new Promise((rej,res)=>{
-    let a = prompt("Enter your age")
-    if(a == 20){
-        res('Mubarak ho Shadi hogae')
-    }
-    else{
-        rej('Beta tumse nh ho payega')
-    }
-}).then((data)=>{
-    document.write(data)
-})
-.catch((err)=>{
-    document.write(err)
-})
+
+
+
+// ======================================== Promises ========================================
+
+
+
+
+// let a = new Promise((res, rej) => {
+//   let relation = prompt("Enter your age");
+//   if (relation >= 18 && relation <= 100) {
+//     res("han shaadi hogai");
+//   } else {
+//     rej("katt gaya");
+//   }
+// })
+//   .then((data) => {
+//     swal(data);
+//   })
+//   .catch((err) => {
+//     swal(err);
+//   });
