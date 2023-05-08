@@ -1,163 +1,58 @@
-// --------------------------------------Class-1----------------------------------------------------
-
-
-
-// var fname = 'Saad'
-// fname = 'Ali'
-// console.log(fname)
-
-
-// let fname = 'Saad'
-// fname = 'Ali'
-// console.log(fname)
-
-
-// if(true){
-//     var a = 45
-// }
-// console.log(a)
-
-// a = 5;
-// var a;
-// console.log(a)
-// foo()
-
-// function foo(){
-//     alert('hello world')
-// }
-
-// const fname = 'Saad'
-// fname = 'Ali'
-// console.log(fname)
-
-// const obj = {
-//     fanme: 'Saad',
-//     roll_no: 123
-// }
-
-// obj.fanme = 'Ali'
-
-// console.log(obj.fanme)
-
-// const arr = ['Ali','Hamza']
-// arr = ['Hamzaaa','Hadi']
-// console.log(arr)
-
-// arr[1] = 'Jalal'
-// console.log(arr)
-
-
-
-
-
-
-
-
-// --------------------------------------Class-2----------------------------------------------
-
-
-
-// -------------------------template literals----------------------------
-
-
-
-// let fname = 'Saad'
-// let lname = 'Ali'
-// document.write('My first name is '+fname+' and my last name is '+lname+"<br>")
-
-// document.write(`My first name is ${fname} and <br> my last name is ${lname}`)
-
-
-
-
-
-// --------------------------destructuring---------------------------
-
-
-
-
-// let arr = ['Saad','Ali','Hamza','Jalal']
-
-// let [a,b,c,d] = arr
-
-// a = 'Kangaro'
-
-// document.write(a)
-
-
-// document.write(c)
-
-
-// let obj = {
-//     name: 'Saad',
-//     age: 12,
-//     roll: 244
-// }
-
-// let { name, age, roll } = obj
-// document.write(age)
-
-
-
-
-
-// -------------------------------default parameters----------------------
-
-
-
-
-// function foo(a=6,b=10){
-//     return a + b
-// }
-// document.write(foo(2,2))
-
-// spread operators
-
-// let obj = {
-//     name: 'Saad',
-//     age: 12,
-//     roll: 244
-// }
-
-// let obj1 = {
-//     ...obj,
-//     sec: 'A'
-// }
-
-// console.log(obj)
-
-
-// arrow functions
-
-// function foo(a){
-//     return a+ b
-// }
-// foo()
-
-// let foo = a => a
-
-// alert(foo())
-
-
-
-
-
-// ======================================== Promises ========================================
-
-
-
-
-// let a = new Promise((res, rej) => {
-//   let relation = prompt("Enter your age");
-//   if (relation >= 18 && relation <= 100) {
-//     res("han shaadi hogai");
-//   } else {
-//     rej("katt gaya");
-//   }
-// })
-//   .then((data) => {
-//     swal(data);
+import { initializeApp } from "https://www.gstatic.com/firebasejs/9.20.0/firebase-app.js";
+import { getDatabase,ref, set } from "https://www.gstatic.com/firebasejs/9.21.0/firebase-database.js";
+import { getAuth ,signInWithEmailAndPassword ,createUserWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/9.20.0/firebase-auth.js";
+  
+  const firebaseConfig = {
+    apiKey: "AIzaSyAzpav9KsTQ9_nr6gi4mInTp7JrsGHLHpA",
+    authDomain: "quiz-app-65c3e.firebaseapp.com",
+    projectId: "quiz-app-65c3e",
+    storageBucket: "quiz-app-65c3e.appspot.com",
+    messagingSenderId: "546653806160",
+    appId: "1:546653806160:web:4590ef27bf891bf505bb55",
+    measurementId: "G-HL5GZ85GPD" 
+  };
+
+  
+  const app = initializeApp(firebaseConfig);
+  const auth = getAuth(app);
+  const db = getDatabase(app);
+
+  let sbtn = document.getElementById('sbtn')
+  sbtn.addEventListener(`click`,()=>{
+    let email = document.getElementById('semail').value
+    let password = document.getElementById('spass').value
+    createUserWithEmailAndPassword(auth, email, password)
+  .then((userCredential) => {
+   
+    const user = userCredential.user;
+    console.log(user)
+    // let rnum = Math.random()*100
+    // let change = Math.floor(rnum)
+    set(ref(db,`users/${user.uid}`),{
+        email: email,
+        pass: password
+    })
+    console.log('data inserted successfully')
+  })
+  .catch((error) => {
+    
+    console.log(error)
+
+  });
+  })
+
+// let lbtn = document.getElementById('lbtn').addEventListener('click',()=>{
+//     let email = document.getElementById('lemail').value
+//     let password = document.getElementById('lpass').value
+
+//     signInWithEmailAndPassword(auth, email, password)
+//   .then((userCredential) => {
+
+//     const user = userCredential.user;
+//     console.log(user)
 //   })
-//   .catch((err) => {
-//     swal(err);
+//   .catch((error) => {
+//     console.log(error)
 //   });
+
+// })
